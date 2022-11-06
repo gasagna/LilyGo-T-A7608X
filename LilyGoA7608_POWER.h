@@ -48,6 +48,7 @@ float batteryVoltage() {
     for (int i=0; i<NSAMPLES; i++) {
         for (int j=0; j<NSAMPLES; j++) {
             samples[j] = (float)analogReadMilliVolts(BAT_ADC) * 2 / 1000;
+            delay(2);
         }
 
         // sort data
