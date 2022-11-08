@@ -62,9 +62,8 @@ float batteryVoltage() {
     return voltage;
 }
 
-// enable reading battery voltage and using battery power
+// enable battery power
 void enable_battery_functions() {
-    // enable battery
     pinMode(BAT_EN, OUTPUT);
     digitalWrite(BAT_EN, HIGH);
 }
@@ -101,9 +100,7 @@ void modem_hw_poweroff() {
     digitalWrite(PWR_PIN, LOW);   delay(2000);
 }
 
-
 // avoid modem starting when waking up from sleep
-
 void keepRESETPINLOW() {
     pinMode(RESET, OUTPUT);
     digitalWrite(RESET, LOW);
