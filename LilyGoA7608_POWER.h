@@ -6,10 +6,6 @@
 
 #include "esp_sleep.h"
 
-
-// number of samples for battery reading
-#define NSAMPLES 10
-
 // Sorts data in ascending order
 template <typename T>
 void bubbleSort(T data[], int8_t N) {
@@ -26,25 +22,25 @@ void bubbleSort(T data[], int8_t N) {
 }
 
 // get battery voltage
-float batteryVoltage() {
+float batteryVoltage(int N = 5) {
     // read battery voltage
     pinMode(BAT_ADC, INPUT);
 
-    float samples[NSAMPLES];
+    float samples[N];
     float voltage = 0.0;
 
     // get samples
-    for (int i=0; i<NSAMPLES; i++) {
-        for (int j=0; j<NSAMPLES; j++) {
+    for (int i=0; i<N; i++) {
+        for (int j=0; j<N; j++) {
             samples[j] = (float)analogReadMilliVolts(BAT_ADC) * 2 / 1000;
             delay(2);
         }
 
         // sort data
-        bubbleSort(samples, NSAMPLES);
+        bubbleSort(samples, N);
 
-        // average NSAMPLES times the median values of NSAMPLES samples
-        voltage += samples[(NSAMPLES-1) / 2] / NSAMPLES;
+        // average N times the median values of N samples
+        voltage += samples[(N-1) / 2] / N;
     }
 
     // return median  
