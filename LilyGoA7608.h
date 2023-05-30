@@ -10,6 +10,8 @@
 // configuration for serial port to simcom module
 #define PIN_TX   26
 #define PIN_RX   27
+#define PIN_DTR  25
+#define PIN_RI   33
 
 // for the battery
 #define BAT_EN   12
