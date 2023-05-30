@@ -47,9 +47,9 @@ void bubbleSort(T data[], int8_t N) {
 }
 
 // get battery voltage
-float batteryVoltage(int N = 5) {
+float pinMeanMedianVoltage(int BAT_PIN, int N = 5) {
     // read battery voltage
-    pinMode(BAT_ADC, INPUT);
+    pinMode(BAT_PIN, INPUT);
 
     float samples[N];
     float voltage = 0.0;
@@ -57,8 +57,8 @@ float batteryVoltage(int N = 5) {
     // get samples
     for (int i=0; i<N; i++) {
         for (int j=0; j<N; j++) {
-            samples[j] = (float)analogReadMilliVolts(BAT_ADC) * 2 / 1000;
-            delay(2);
+            samples[j] = (float)analogReadMilliVolts(BAT_PIN) / 1000;
+            delay(1);
         }
 
         // sort data
