@@ -58,7 +58,6 @@ float pinMeanMedianVoltage(int BAT_PIN, int N = 5) {
     for (int i=0; i<N; i++) {
         for (int j=0; j<N; j++) {
             samples[j] = (float)analogReadMilliVolts(BAT_PIN) / 1000;
-            delay(1);
         }
 
         // sort data
