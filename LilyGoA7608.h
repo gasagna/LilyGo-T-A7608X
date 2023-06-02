@@ -72,6 +72,12 @@ float pinMeanMedianVoltage(int BAT_PIN, int N = 5) {
     return voltage;
 }
 
+// modem is on when both DTR and RI are high
+bool modem_is_on() {
+    pinMode(PIN_DTR, INPUT); pinMode(PIN_RI, INPUT);
+    return pinMeanMedianVoltage(PIN_DTR, 10) > 3 && pinMeanMedianVoltage(PIN_RI, 10) > 3;
+}
+
 // enable battery power
 void enable_battery_functions() {
     pinMode(BAT_EN, OUTPUT);
